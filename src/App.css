@@ -28,11 +28,40 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+button {
+	padding: 8px 15px;
+	margin-right: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+
+button.active {
+	background-color: #007bff;
+	color: white;
+	border-color: #007bff;
+	font-weight: bold;
+
+}
+
+button:hover {
+	background-color: #f0f0f0;
+}
+
+
+button.active:hover {
+	background-color: #0056b3;
+
+}
+
+form {
+	padding: 10px;
+}
+
+form :first-child {
+	padding: 10px;
 }
