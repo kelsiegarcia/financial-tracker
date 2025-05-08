@@ -1,34 +1,30 @@
 # Overview
 
-Here is a React functional component called BalanceDisplay.
+React functional component called Financial Tracker
 
-{Describe your purpose for writing this software.}
+Served on http://localhost:3000 and use npm start
 
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
+This web app provides a simple interface to track a user's account balance and perform basic deposit and withdrawal transactions. Users can deposit and withdraw funds and view their updated balance in real-time.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/B492HGrtxwc)
 
 # Web Pages
 
-{Describe each of the web pages you created and how the web app transitions between each of them. Also describe what is dynamically created on each page.}
+Built using React, it's a single interactive page.
+There are two buttons to choose between transaction types. The CSS dynamically displays what transaction type is selected. The input field allows users to enter a numerical amount they wish to withdraw or deposit. Depending on what transaction they choose the amount will be either added or subtracted and will dynamically render the remaining total. After successful transaction the input clears and is ready for the next transaction. The app will alert users of invalid input or insufficient funds.
 
-# Development Environment
+# Development Environment and languages
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+npm, JavaScript, React framework,
+CSS, JSX
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [React](https://react.dev/learn)
+- [React tutorials point](https://www.tutorialspoint.com/reactjs/index.htm)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-
-- Item 1
-- Item 2
-- Item 3
+- Add goals and display a progress bar
+- Other financial features
+- Connect a database

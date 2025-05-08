@@ -57,6 +57,7 @@ function BalanceDisplay() {
     setTransactionType('withdraw');
   };
 
+  // dynamically renders the button text based on the transactionType state variable
   return (
     <div>
       <h2>Account Balance Tracker</h2>
