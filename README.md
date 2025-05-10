@@ -16,7 +16,7 @@ There are two buttons to choose between transaction types. The CSS dynamically d
 # Development Environment and languages
 
 npm, JavaScript, React framework,
-CSS, JSX
+CSS, JSX, SQLite3, Python
 
 # Useful Websites
 
@@ -27,4 +27,4 @@ CSS, JSX
 
 - Add goals and display a progress bar
 - Other financial features
-- Connect a database
+- Finishing connecting the data base
