@@ -22,17 +22,29 @@ function BalanceDisplay() {
   const [error, setError] = useState('');
 
   // fetch balance on load
+  // useEffect is a Hook that lets you perform side effects in function components
+  // it runs after the first render and after every update
+  // the empty array [] means it runs only once after the initial render
+  // it fetches the balance from the server using the userId
+  // if the balance is successfully fetched, it updates the currentBalance state variable
+  // if there is an error, it sets the error state variable
+
   useEffect(() => {
-    fetch(`${API_BASE}/balance/${userId}`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchBalance = async () => {
+      try {
+        const response = await fetch(`${API_BASE}/balance/${userId}`);
+        const data = await response.json();
         if (data.balance !== undefined) {
           setCurrentBalance(data.balance);
         } else {
           setError(data.error || 'Error fetching balance');
         }
-      })
-      .catch(() => setError('Failed to connect to server'));
+      } catch (error) {
+        setError('Failed to connect to server');
+      }
+    };
+
+    fetchBalance();
   }, [userId]);
 
   // function to handle the balanceInput state in sync with the input field
@@ -45,62 +57,63 @@ function BalanceDisplay() {
   // event.target.value gets the value of the radio button from the html
   const handleTransaction = (event) => {
     event.preventDefault();
-    const amount = parseFloat(balanceInput);
+    try {
+      const amount = parseFloat(balanceInput);
 
-    // check if the amount is a valid number
-    // deposits increase the currentBalance
-    // withdrawals decrease the currentBalance
-    // if the amount is greater than the currentBalance, alert the user
-    // input field is cleared after the transaction
-    if (isNaN(amount)) {
-      alert('Please enter a valid number');
-      return;
-    }
-    if (amount <= 0) {
-      setError('Please enter a valid positive number');
-      return;
-    }
-    if (transactionType === 'deposit') {
-      // functional update form, recommended way to update state that depends on the previous state value
-      setCurrentBalance((prevBalance) => prevBalance + amount);
-    } else if (transactionType === 'withdraw') {
-      if (amount <= currentBalance) {
-        setCurrentBalance((prevBalance) => prevBalance - amount);
-      } else {
-        alert('Insufficient funds.');
+      // check if the amount is a valid number
+      if (isNaN(amount)) {
+        alert('Please enter a valid number');
         return;
       }
-    } else {
-      alert('Please enter a valid number for the transaction amount');
-    }
-    setBalanceInput(''); // Clear the input after transaction
-
-    const endpoint = transactionType === 'deposit' ? 'deposit' : 'withdraw';
-
-    fetch(`${API_BASE}/${endpoint}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user_id: userId,
-        amount,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('server reponse:', data);
-        if (data.balance !== undefined) {
-          setCurrentBalance(data.balance);
-          setMessage(data.message || `${transactionType} successful`);
-          setError('');
-          setBalanceInput('');
+      if (amount <= 0) {
+        setError('Please enter a valid positive number');
+        return;
+      }
+      if (transactionType === 'deposit') {
+        setCurrentBalance((prevBalance) => prevBalance + amount);
+      } else if (transactionType === 'withdraw') {
+        if (amount <= currentBalance) {
+          setCurrentBalance((prevBalance) => prevBalance - amount);
         } else {
-          setError(data.error || 'Transaction failed');
-          setMessage('');
+          alert('Insufficient funds.');
+          return;
         }
+      } else {
+        alert('Please enter a valid number for the transaction amount');
+      }
+      setBalanceInput(''); // Clear the input after transaction
+
+      const endpoint = transactionType === 'deposit' ? 'deposit' : 'withdraw';
+
+      // make a POST request to the server with the userId and amount
+      fetch(`${API_BASE}/${endpoint}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          amount,
+        }),
       })
-      .catch(() => setError('Failed to connect to server'));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('server response:', data);
+          if (data.balance !== undefined) {
+            setCurrentBalance(data.balance);
+            setMessage(data.message || `${transactionType} successful`);
+            setError('');
+            setBalanceInput('');
+          } else {
+            setError(data.error || 'Transaction failed');
+            setMessage('');
+          }
+        })
+        .catch(() => setError('Failed to connect to server'));
+    } catch (error) {
+      console.error('An error occurred:', error);
+      setError('An unexpected error occurred. Please try again.');
+    }
   };
 
   // event handlers for updating transactionType state variable. it keeps track of the transaction type (either deposit or withdraw).
