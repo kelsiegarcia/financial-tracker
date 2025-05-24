@@ -8,7 +8,7 @@ As a software engineer, this project helped me deepen my understanding of RESTfu
 
 ### Software Demo Video
 
-[Watch Demo](http://youtube.link.goes.here)
+[Watch Demo](https://youtu.be/2vGMSJwARE8)
 
 ## Web App Features
 
