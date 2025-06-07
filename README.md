@@ -1,106 +1,84 @@
-# Financial Tracker
+# 💰 Financial Tracker Web App
 
 ## Overview
 
-The **Financial Tracker** is a full-stack application designed to help users manage a personal balance by performing deposit and withdrawal transactions. It is built with a **React frontend**, a **Flask backend**, and a **SQLite3 database** to persist financial data.
+This project is a personal finance tracker web application that allows users to view their balance, deposit funds, and withdraw money. It’s part of a long-term learning effort to strengthen my skills as a full-stack software engineer — with a strong focus on modular development, data persistence, and cloud integration.
 
-As a software engineer, this project helped me deepen my understanding of RESTful APIs, state management in React, full-stack data flow, and basic networking concepts. It also provided experience working with database integration and frontend/backend communication using HTTP over TCP.
+The project is built using **React** for the frontend, **Flask** for the backend API, and **Firebase Realtime Database** for cloud-based storage in Module 3. In earlier modules, I explored state management with JavaScript (Module 1) and integrated a local SQLite3 database (Module 2).
 
-### Software Demo Video
+📹 [Software Demo Video](https://youtu.be/Mq-4ct8IneM)
 
-[Watch Demo](https://youtu.be/2vGMSJwARE8)
+---
 
-## Web App Features
+## 📦 Modules Overview
 
-- Built with React (served at `http://localhost:3000`)
-- View and update account balance in real time
-- Select between **deposit** or **withdraw**
-- Input numeric values for transactions
-- Balance is updated dynamically
-- User is alerted on:
-  - Invalid inputs
-  - Insufficient funds
-- Clear feedback and interaction via modern UI
+### ✅ Module 1: Frontend Development
 
-## Network Communication
+- Created a functional UI using **React** with state and form handling.
+- Added logic for handling transactions (deposit, withdraw) in-memory.
+- Set up project structure with Vite and React Hooks.
 
-This application uses a **Client-Server** architecture with HTTP requests over **TCP** (in may case, port `5001` on the backend and `3000` on the frontend).
+### ✅ Module 2: Backend Integration with Local DB
 
-### Message Flow:
+- Set up a **Flask** backend and connected it to a **SQLite3** database.
+- API endpoints created for:
+  - `GET /balance/:user_id`
+  - `POST /deposit`
+  - `POST /withdraw`
+- Data was persisted locally with `sqlite3`.
 
-- `GET /balance/<user_id>` — Retrieve the user's current balance
-- `POST /deposit` — Deposit an amount into the account
-- `POST /withdraw` — Withdraw an amount from the account
+### ✅ Module 3: Cloud Database with Firebase
 
-**Message Format:** JSON (for both requests and responses)
+- Migrated backend database logic to **Firebase Realtime Database**.
+- Updated endpoints to interact with Firebase instead of SQLite.
+- Deployed project in a way that reflects scalable cloud practices.
 
-```json
-// Example request
-{
-  "user_id": 1,
-  "amount": 20
-}
+---
 
-// Example response
-{
-  "balance": 120.0
-}
-```
+## ☁️ Cloud Database
 
-### Server Setup
+- **Firebase Realtime Database**
+- Secure access set up using service account credentials (`firebase_credentials.json`)
+- Database structure (per user):
+  ```json
+  {
+    "users": {
+      "1": {
+        "balance": 1000
+      },
+      "2": {
+        "balance": 500
+      }
+    }
+  }
+  ```
 
-To run the Flask server (on port 5001, in my case):
+---
 
-```bash
-flask --app backend/app.py run
-```
+## 💻 Development Environment
 
-### Client Setup
+- **Frontend:** React (Vite), JavaScript
+- **Backend:** Flask, Python 3
+- **Database:** Firebase Realtime DB (Module 3), SQLite (Module 2)
+- **Tools:** VS Code, Postman, Firebase Console, GitHub
 
-To run the React frontend (on port 3000 by default):
+---
 
-```bash
-cd frontend
-npm install
-npm start
-```
+## 🔗 Useful References
 
-Ensure Flask and React are running simultaneously.
-
-## Development Environment
-
-**Frontend:**
-
-- React
-- JSX
-- CSS
-- npm
-
-**Backend:**
-
-- Flask (Python)
-- SQLite3 (Database)
-
-**Tools Used:**
-
-- Visual Studio Code
-- Postman (for API testing)
-- curl (for manual HTTP requests)
-
-## Useful Websites
-
-- [React Documentation](https://reactjs.org/)
+- [Firebase Realtime Database Docs](https://firebase.google.com/docs/database)
 - [Flask Documentation](https://flask.palletsprojects.com/)
-- [SQLite Documentation](https://www.sqlite.org/docs.html)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [TutorialsPoint - React](https://www.tutorialspoint.com/reactjs/)
+- [React Official Docs](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
 
-## Future Work
+---
 
-- ✅ Connect frontend to Flask backend (Completed)
-- ✅ Add database persistence using SQLite (Completed)
-- ✅ Support multiple transaction types (Completed)
-- 🔲 Display full transaction history from database
-- 🔲 Add savings goals with progress bars
-- 🔲 Implement authentication for multiple users
-- 🔲 Deploy project to a cloud platform
+## 🚀 Future Improvements
+
+- Add user authentication with Firebase Auth
+- Track transaction history per user
+- Add styling and UI animations
+- Validate numeric inputs and show real-time errors
+- Allow multiple users with login functionality
+
+---

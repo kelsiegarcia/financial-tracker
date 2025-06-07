@@ -16,9 +16,11 @@ function BalanceDisplay() {
   const [transactionType, setTransactionType] = useState('deposit');
 
   // set message
+  // eslint-disable-next-line
   const [message, setMessage] = useState('');
 
   //set error message
+  // eslint-disable-next-line
   const [error, setError] = useState('');
 
   // fetch balance on load

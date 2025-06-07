@@ -1,23 +1,31 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# 📦 Node.js dependencies
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# 🧪 Testing
+coverage/
 
-# testing
-/coverage
+# ⚙️ Python cache
+__pycache__/
 
-# production
-/build
+# 💾 Database files
+*.db
 
-# misc
+# 🔐 Environment variables and credentials
+.env
+.env.*
+backend/firebase/firebase_credentials.json
+
+# ⚙️ Flask/SQLite database logic (if not meant to be pushed)
+backend/db/sqlite_db.py
+backend/db/database.py
+
+# 🏗️ Production build
+build/
+
+# 💻 macOS system file
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
+# 🧹 Miscellaneous logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
