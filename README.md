@@ -69,7 +69,7 @@ The project is built using **React** for the frontend, **Flask** for the backend
 - [Firebase Realtime Database Docs](https://firebase.google.com/docs/database)
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [React Official Docs](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
+- [SQLite3](https://docs.python.org/3/library/sqlite3.html)
 
 ---
 
