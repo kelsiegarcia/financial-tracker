@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a personal finance tracker web application that allows users to view their balance, deposit funds, and withdraw money. It’s part of a long-term learning effort to strengthen my skills as a full-stack software engineer — with a strong focus on modular development, data persistence, and cloud integration.
+This project is a personal finance tracker web application that allows users to view their balance, deposit funds, and withdraw money. It’s part of a long-term learning effort to strengthen my skills as a full-stack software engineer. There is a strong focus on modular development, data persistence, and cloud integration.
 
 The project is built using **React** for the frontend, **Flask** for the backend API, and **Firebase Realtime Database** for cloud-based storage in Module 3. In earlier modules, I explored state management with JavaScript (Module 1) and integrated a local SQLite3 database (Module 2).
 
@@ -16,7 +16,7 @@ The project is built using **React** for the frontend, **Flask** for the backend
 
 - Created a functional UI using **React** with state and form handling.
 - Added logic for handling transactions (deposit, withdraw) in-memory.
-- Set up project structure with Vite and React Hooks.
+- Set up project structure with React Hooks.
 
 ### ✅ Module 2: Backend Integration with Local DB
 
@@ -57,10 +57,10 @@ The project is built using **React** for the frontend, **Flask** for the backend
 
 ## 💻 Development Environment
 
-- **Frontend:** React (Vite), JavaScript
+- **Frontend:** React, JavaScript
 - **Backend:** Flask, Python 3
 - **Database:** Firebase Realtime DB (Module 3), SQLite (Module 2)
-- **Tools:** VS Code, Postman, Firebase Console, GitHub
+- **Tools:** VS Code, Firebase Console, GitHub
 
 ---
 
