@@ -10,6 +10,11 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p></p>
         <BalanceDisplay />
+        <img
+          src="http://127.0.0.1:5001/static/images/transaction_summary.png"
+          alt="Transaction Summary Graph"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
       </header>
     </div>
   );

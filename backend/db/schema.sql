@@ -12,3 +12,11 @@ CREATE table users (
 -- insert first intial user 
 INSERT INTO users (id, balance) VALUES (1, 100.0);
 
+CREATE table IF NOT EXISTS transactions (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	amount REAL NOT NULL,
+	type TEXT NOT NULL CHECK(type IN ('deposit', 'withdrawal')),
+	timestamp TEXT DEFAULT CURRENT_TIMESTAMP,
+	description TEXT
+);
+

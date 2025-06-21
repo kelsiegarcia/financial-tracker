@@ -1,11 +1,15 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from db.firebase_db import get_balance, deposit, withdraw
+from db.firebase_db import get_balance, deposit, withdraw, get_transactions
 import traceback
 
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
+@app.route('/')
+def home():
+    return "<h1>Welcome to the Financial Tracker API!</h1><p>Navigate to /transactions/&lt;id&gt; for transaction data.</p>"
 
 @app.route('/balance/<user_id>', methods=['GET'])
 def route_get_balance(user_id):
@@ -39,6 +43,11 @@ def route_withdraw():
     if 'error' in result:
         status_code = 400 if result.get('error') == 'Insufficient funds' else 404
         return jsonify(result), status_code
+    return jsonify(result)
+
+@app.route('/transactions/<user_id>', methods=['GET'])
+def route_get_transactions(user_id):
+    result = get_transactions(user_id)
     return jsonify(result)
 
 if __name__ == '__main__':
